@@ -1,0 +1,43 @@
+package com.buetcrt.activity;
+
+import com.buet_crt.csefest.R;
+import com.buetcrt.utils.AppUtility;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
+import android.view.Window;
+
+public class SplashActivity extends Activity {
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		setContentView(R.layout.activity_splash);
+		new Handler().postDelayed(new Runnable() {
+			
+			@Override
+			public void run() {
+				//start other activity
+				overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+				finish();
+				
+			}
+		}, 3000);
+	}
+	private void test()
+	{
+		AppUtility.setInt("test",SplashActivity.this,3);
+		Log.e("put value",""+3);
+		Log.e("get value",""+AppUtility.getInt("test",SplashActivity.this));
+		if(AppUtility.hasInternet(SplashActivity.this))
+		{
+			AppUtility.simpleAlert(SplashActivity.this,"Got internet");
+		}
+		else
+			AppUtility.simpleAlert(SplashActivity.this,"No internet Available");
+	}
+
+}
