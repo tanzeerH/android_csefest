@@ -17,4 +17,7 @@ public interface CartService {
 	
 	@GET("/classes/Order")
 	void getOrders(Callback<JsonElement> response);
+	
+	@POST("/functions/checkout")
+	void checkout(Callback<JsonElement> response);
 }

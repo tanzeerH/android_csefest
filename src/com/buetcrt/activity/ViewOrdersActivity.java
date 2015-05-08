@@ -9,6 +9,12 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 import android.app.ListActivity;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.buetcrt.adapter.OrderAdapter;
@@ -50,6 +56,14 @@ public class ViewOrdersActivity extends ListActivity {
 				
 				orderAdapter = new OrderAdapter(ViewOrdersActivity.this, R.layout.row_order, orders);
 				setListAdapter(orderAdapter);
+				
+				TextView orderTotal = new TextView(ViewOrdersActivity.this);
+				orderTotal.setText("Total = " + getOrderTotal(orders));
+				orderTotal.setGravity(Gravity.CENTER);
+				orderTotal.setTextSize(20);
+				orderTotal.setLayoutParams(
+						new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+				getListView().addFooterView(orderTotal);
 			}
 			
 			@Override
@@ -60,5 +74,30 @@ public class ViewOrdersActivity extends ListActivity {
 			}
 		});
 		
+	}
+	
+	private int getOrderTotal(List<Order> orders) {
+		int total = 0;
+		
+		for (int i = 0; i < orders.size(); i++) {
+			total += orders.get(i).getSubTotal();
+		}
+		
+		return total;
+	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.activity_view_order, menu);
+		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		if (item.getItemId() == R.id.checkout) {
+			return true;
+		}
+		
+		return super.onOptionsItemSelected(item);
 	}
 }

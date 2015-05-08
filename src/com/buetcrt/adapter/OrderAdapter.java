@@ -3,6 +3,7 @@ package com.buetcrt.adapter;
 import java.util.List;
 
 import android.content.Context;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,8 +42,8 @@ public class OrderAdapter extends ArrayAdapter<Order> {
 		Order order = orders.get(position);
 		
 		tvId.setText(order.getProduct().getObjectId());
-		tvQuantity.setText(Integer.toString(order.getQuantity()));
-		tvSubtotal.setText(Integer.toString(order.getSubTotal()));
+		tvQuantity.setText(Html.fromHtml("&times; " + order.getQuantity()));
+		tvSubtotal.setText(Html.fromHtml("= <sup>$</sup>" + order.getSubTotal()));
 		
 		return view;
 	}
