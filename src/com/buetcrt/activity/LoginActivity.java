@@ -77,7 +77,7 @@ public class LoginActivity extends Activity {
 		reset();
 	}
 	public void reset() {
-		if(etUserName.equals(""))
+		if(etUserName.getText().equals(""))
 			AppUtility.simpleAlert(LoginActivity.this,"Please enter yoor email in the username field.");
 		else
 		{
