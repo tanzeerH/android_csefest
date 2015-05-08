@@ -1,7 +1,7 @@
 package com.buetcrt.utils;
 
 public interface Constants {
-	String API_END_POINT = "https://api.github.com";
+	String API_END_POINT = "https://api.parse.com/1";
 	String USER_NAME = "user_name";
 	String EMAIL = "email";
 	String PASSWORD = "password";

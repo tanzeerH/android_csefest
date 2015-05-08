@@ -1,49 +1,75 @@
 package com.buetcrt.activity;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.TextView;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import com.buetcrt.apiclient.LoginSignUpService;
+import com.buetcrt.apiclient.UnauthenticatedRequestInterceptor;
 import com.buetcrt.csefest.R;
-import com.buetcrt.apiclient.GitHubService;
 import com.buetcrt.model.User;
 import com.buetcrt.utils.Constants;
 
 public class LoginActivity extends Activity {
 
-	private TextView tvResult;
+	private EditText etUserName;
+	private EditText etPassword;
+	private Button btnLogin;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_login);
 
-		tvResult = (TextView) findViewById(R.id.tv_result);
-		loadData();
+		etUserName = (EditText) findViewById(R.id.et_username);
+		etPassword = (EditText) findViewById(R.id.et_password);
+		btnLogin = (Button) findViewById(R.id.btn_login);
 	}
+	
+	public void onLoginClick(View v) {
+		RestAdapter adapter = new RestAdapter.Builder()
+			.setEndpoint(Constants.API_END_POINT)
+			.setRequestInterceptor(new UnauthenticatedRequestInterceptor())
+			.build();
 
-	private void loadData() {
-		RestAdapter adapter = new RestAdapter.Builder().setEndpoint(
-				Constants.API_END_POINT).build();
-
-		GitHubService service = adapter.create(GitHubService.class);
-		service.getUser("rafi-kamal", new Callback<User>() {
-
+		Map<String, String> loginCredentials = new HashMap<String, String>();
+		loginCredentials.put("username", etUserName.getText().toString());
+		loginCredentials.put("password", etPassword.getText().toString());
+		
+		LoginSignUpService service = adapter.create(LoginSignUpService.class);
+		service.login(loginCredentials, new Callback<User>() {
+			
 			@Override
-			public void success(User user, Response arg1) {
-				tvResult.setText(user.toString());
-
+			public void success(User arg0, Response arg1) {
+				Intent intent = new Intent(LoginActivity.this, SplashActivity.class);
+				startActivity(intent);
 			}
-
+			
 			@Override
-			public void failure(RetrofitError arg0) {
-				tvResult.setText("Error loading data");
+			public void failure(RetrofitError argten0) {
+				Toast.makeText(LoginActivity.this, "Error logging in. Please try again.", 
+						Toast.LENGTH_LONG).show();
+				btnLogin.setText("Login");
+				
 			}
 		});
+		
+		btnLogin.setText("Logging In..");
+	}
+	
+	public void onSignUpClick(View v) {
+		
 	}
 
 	@Override
