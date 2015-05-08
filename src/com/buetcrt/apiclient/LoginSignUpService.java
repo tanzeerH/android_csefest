@@ -21,4 +21,5 @@ public interface LoginSignUpService {
 	
 	@POST("/logout")
 	void logout(Callback<JsonElement> callback);
+
 }

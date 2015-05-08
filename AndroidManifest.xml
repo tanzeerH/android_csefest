@@ -22,21 +22,27 @@
         <activity
             android:name="com.buetcrt.activity.LoginActivity"
             android:label="Log In" >
-           
         </activity>
         <activity
             android:name="com.buetcrt.activity.SignUpActivity"
             android:label="Sign Up" />
         <activity android:name="com.buetcrt.activity.SplashActivity" >
-        </activity>
-        <activity android:name="com.buetcrt.activity.ProductDetailsActivity"></activity>
-        <activity android:name="com.buetcrt.activity.SearchActivity"></activity>
-        <activity android:name="com.buetcrt.activity.ProductsActivity">
-             <intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name="com.buetcrt.activity.ProductDetailsActivity" >
+        </activity>
+        <activity android:name="com.buetcrt.activity.SearchActivity" >
+        </activity>
+        <activity android:name="com.buetcrt.activity.ProductsActivity" >
+        </activity>
+        <activity android:name="com.buetcrt.activity.TestActivity" >
+        </activity>
+        <activity android:name="com.buetcrt.activity.ViewOrdersActivity" >
+            
         </activity>
     </application>
 
