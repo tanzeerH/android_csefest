@@ -15,12 +15,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.buetcrt.apiclient.AuthenticatedRequestInterceptor;
+import com.buetcrt.apiclient.CartService;
 import com.buetcrt.apiclient.LoginSignUpService;
 import com.buetcrt.apiclient.UnauthenticatedRequestInterceptor;
 import com.buetcrt.csefest.R;
 import com.buetcrt.model.User;
 import com.buetcrt.utils.AppUtility;
 import com.buetcrt.utils.Constants;
+import com.google.gson.JsonElement;
 
 public class LoginActivity extends Activity {
 
@@ -53,9 +56,8 @@ public class LoginActivity extends Activity {
 			
 			@Override
 			public void success(User user, Response arg1) {
-				Intent intent = new Intent(LoginActivity.this, TestActivity.class);
 				AppUtility.saveLoginDetails(LoginActivity.this, user.getEmail(), user.getSessionToken());
-				startActivity(intent);
+				fetchCartId();
 			}
 			
 			@Override
@@ -68,6 +70,35 @@ public class LoginActivity extends Activity {
 		});
 		
 		btnLogin.setText("Logging In..");
+	}
+	
+	public void fetchCartId() {
+		RestAdapter adapter = new RestAdapter.Builder()
+				.setEndpoint(Constants.API_END_POINT)
+				.setRequestInterceptor(
+						new AuthenticatedRequestInterceptor(this)).build();
+
+		CartService cartService = adapter.create(CartService.class);
+
+		cartService.getActiveCart(new Callback<JsonElement>() {
+
+			@Override
+			public void success(JsonElement response, Response arg1) {
+				String cartId = response.getAsJsonObject().get("results")
+						.getAsJsonArray().get(0).getAsJsonObject()
+						.get("objectId").getAsString();
+				AppUtility.saveCartId(LoginActivity.this, cartId);
+				System.out.println(cartId);
+				
+				Intent intent = new Intent(LoginActivity.this, TestActivity.class);
+				startActivity(intent);
+			}
+
+			@Override
+			public void failure(RetrofitError arg0) {
+				System.out.println(arg0.getMessage());
+			}
+		});
 	}
 	
 	public void onSignUpClick(View v) {
