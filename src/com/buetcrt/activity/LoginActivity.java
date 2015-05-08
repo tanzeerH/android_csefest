@@ -13,7 +13,7 @@ import com.buetcrt.apiclient.GitHubService;
 import com.buetcrt.model.User;
 import com.buetcrt.utils.Constants;
 
-public class BaseActivity extends Activity {
+public class LoginActivity extends Activity {
 
 	private TextView tvResult;
 
