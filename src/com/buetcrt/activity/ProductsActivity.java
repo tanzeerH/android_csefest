@@ -74,6 +74,10 @@ public class ProductsActivity  extends FragmentActivity{
 					startActivity(i);
 					overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
 				}
+				else if(position==2){
+					startActivity(i);
+					overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+				}
 				else if(position==4){
 					if (AppUtility.hasInternet(ProductsActivity.this)) {
 
