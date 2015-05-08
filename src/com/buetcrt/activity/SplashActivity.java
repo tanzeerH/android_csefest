@@ -1,6 +1,6 @@
 package com.buetcrt.activity;
 
-import com.buet_crt.csefest.R;
+import com.buetcrt.csefest.R;
 import com.buetcrt.utils.AppUtility;
 
 import android.app.Activity;

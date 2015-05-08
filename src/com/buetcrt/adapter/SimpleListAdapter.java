@@ -3,7 +3,7 @@ package com.buetcrt.adapter;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.buet_crt.csefest.R;
+import com.buetcrt.csefest.R;
 
 
 

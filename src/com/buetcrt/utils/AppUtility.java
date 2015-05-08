@@ -1,6 +1,6 @@
 package com.buetcrt.utils;
 
-import com.buet_crt.csefest.R;
+import com.buetcrt.csefest.R;
 
 import android.app.AlertDialog;
 import android.content.Context;

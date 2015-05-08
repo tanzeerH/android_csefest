@@ -8,7 +8,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.buet_crt.csefest.R;
+import com.buetcrt.csefest.R;
 import com.buetcrt.apiclient.GitHubService;
 import com.buetcrt.model.User;
 import com.buetcrt.utils.Constants;
