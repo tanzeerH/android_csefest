@@ -8,6 +8,7 @@ import retrofit.http.GET;
 import retrofit.http.POST;
 import retrofit.http.QueryMap;
 
+import com.buetcrt.model.ResetInfo;
 import com.buetcrt.model.SignUpCredentials;
 import com.buetcrt.model.User;
 import com.google.gson.JsonElement;
@@ -21,5 +22,8 @@ public interface LoginSignUpService {
 	
 	@POST("/logout")
 	void logout(Callback<JsonElement> callback);
+	@POST("/requestPasswordReset")
+	void reset(@Body ResetInfo resetInfo,Callback<JsonElement> callback);
+
 
 }
