@@ -74,7 +74,7 @@ public class LoginActivity extends Activity {
 	}
 	public void onLoginReset(View v)
 	{
-		
+		reset();
 	}
 	public void reset() {
 		if(etUserName.equals(""))
