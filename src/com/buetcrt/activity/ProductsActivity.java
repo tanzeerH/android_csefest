@@ -89,6 +89,13 @@ public class ProductsActivity  extends FragmentActivity{
 						AppUtility.simpleAlert(ProductsActivity.this,
 								"No internet connection.");
 				}
+				else if(position==0){
+					ProductsFragment productsFragment=new ProductsFragment();
+					FragmentTransaction ft = getFragmentManager().beginTransaction();
+					ft.replace(R.id.frame_container, productsFragment);
+					ft.addToBackStack(null);
+					ft.commit();
+				}
 				
 			}
 		});
