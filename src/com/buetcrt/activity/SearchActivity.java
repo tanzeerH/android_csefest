@@ -10,7 +10,7 @@ import retrofit.client.Response;
 import com.buetcrt.adapter.ProductAdapter;
 import com.buetcrt.apiclient.ProductService;
 import com.buetcrt.apiclient.UnauthenticatedRequestInterceptor;
-import com.buetcrt.csefest.R;
+import com.shopaholic.team16.R;
 import com.buetcrt.csefest.dao.Products;
 import com.buetcrt.model.SearchQuery;
 import com.buetcrt.utils.AppUtility;

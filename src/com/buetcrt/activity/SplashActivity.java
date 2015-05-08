@@ -1,6 +1,6 @@
 package com.buetcrt.activity;
 
-import com.buetcrt.csefest.R;
+import com.shopaholic.team16.R;
 import com.buetcrt.utils.AppUtility;
 
 import android.app.Activity;

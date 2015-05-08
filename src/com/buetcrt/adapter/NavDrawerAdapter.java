@@ -5,7 +5,7 @@ import java.util.List;
 
 
 
-import com.buetcrt.csefest.R;
+import com.shopaholic.team16.R;
 import com.buetcrt.model.NavMenuItem;
 
 import android.app.Activity;

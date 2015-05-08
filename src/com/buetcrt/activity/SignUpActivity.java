@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import com.buetcrt.apiclient.LoginSignUpService;
 import com.buetcrt.apiclient.UnauthenticatedRequestInterceptor;
-import com.buetcrt.csefest.R;
+import com.shopaholic.team16.R;
 import com.buetcrt.model.SignUpCredentials;
 import com.buetcrt.model.User;
 import com.buetcrt.utils.AppUtility;

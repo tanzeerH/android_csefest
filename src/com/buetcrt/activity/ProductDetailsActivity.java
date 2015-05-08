@@ -7,7 +7,7 @@ import retrofit.client.Response;
 
 import com.buetcrt.apiclient.AuthenticatedRequestInterceptor;
 import com.buetcrt.apiclient.CartService;
-import com.buetcrt.csefest.R;
+import com.shopaholic.team16.R;
 import com.buetcrt.lazylist.ImageLoader;
 import com.buetcrt.model.Order;
 import com.buetcrt.utils.AppUtility;

@@ -11,7 +11,7 @@ import android.view.MenuItem;
 
 import com.buetcrt.apiclient.AuthenticatedRequestInterceptor;
 import com.buetcrt.apiclient.CartService;
-import com.buetcrt.csefest.R;
+import com.shopaholic.team16.R;
 import com.buetcrt.utils.Constants;
 import com.google.gson.JsonElement;
 

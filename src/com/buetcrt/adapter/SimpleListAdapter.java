@@ -3,7 +3,7 @@ package com.buetcrt.adapter;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.buetcrt.csefest.R;
+import com.shopaholic.team16.R;
 
 
 

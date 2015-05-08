@@ -29,7 +29,7 @@ import com.buetcrt.apiclient.AuthenticatedRequestInterceptor;
 import com.buetcrt.apiclient.LoginSignUpService;
 import com.buetcrt.apiclient.ProductService;
 import com.buetcrt.apiclient.UnauthenticatedRequestInterceptor;
-import com.buetcrt.csefest.R;
+import com.shopaholic.team16.R;
 import com.buetcrt.fragment.ProductsFragment;
 import com.buetcrt.model.NavMenuItem;
 import com.buetcrt.utils.AppUtility;

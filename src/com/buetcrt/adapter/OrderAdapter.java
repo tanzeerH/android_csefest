@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.buetcrt.csefest.R;
+import com.shopaholic.team16.R;
 import com.buetcrt.model.Order;
 
 public class OrderAdapter extends ArrayAdapter<Order> {

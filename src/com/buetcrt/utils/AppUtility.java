@@ -9,7 +9,7 @@ import android.net.NetworkInfo;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
-import com.buetcrt.csefest.R;
+import com.shopaholic.team16.R;
 import com.buetcrt.csefest.dao.Products;
 
 public class AppUtility {

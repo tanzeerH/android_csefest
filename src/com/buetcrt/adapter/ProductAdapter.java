@@ -9,7 +9,7 @@ import java.util.List;
 
 
 import com.buetcrt.activity.ProductsActivity;
-import com.buetcrt.csefest.R;
+import com.shopaholic.team16.R;
 import com.buetcrt.csefest.dao.Products;
 import com.buetcrt.lazylist.ImageLoader;
 import com.buetcrt.model.NavMenuItem;

@@ -15,7 +15,7 @@ import java.util.WeakHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import com.buetcrt.csefest.R;
+import com.shopaholic.team16.R;
 
 import android.app.Activity;
 import android.graphics.Bitmap;

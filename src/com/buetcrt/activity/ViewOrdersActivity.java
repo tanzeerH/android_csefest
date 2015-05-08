@@ -24,7 +24,7 @@ import android.widget.Toast;
 import com.buetcrt.adapter.OrderAdapter;
 import com.buetcrt.apiclient.AuthenticatedRequestInterceptor;
 import com.buetcrt.apiclient.CartService;
-import com.buetcrt.csefest.R;
+import com.shopaholic.team16.R;
 import com.buetcrt.model.Order;
 import com.buetcrt.utils.AppUtility;
 import com.buetcrt.utils.Constants;
