@@ -19,6 +19,7 @@ import com.buetcrt.apiclient.LoginSignUpService;
 import com.buetcrt.apiclient.UnauthenticatedRequestInterceptor;
 import com.buetcrt.csefest.R;
 import com.buetcrt.model.User;
+import com.buetcrt.utils.AppUtility;
 import com.buetcrt.utils.Constants;
 
 public class LoginActivity extends Activity {
@@ -51,8 +52,9 @@ public class LoginActivity extends Activity {
 		service.login(loginCredentials, new Callback<User>() {
 			
 			@Override
-			public void success(User arg0, Response arg1) {
+			public void success(User user, Response arg1) {
 				Intent intent = new Intent(LoginActivity.this, SplashActivity.class);
+				AppUtility.saveLoginDetails(LoginActivity.this, user.getEmail(), user.getSessionToken());
 				startActivity(intent);
 			}
 			
@@ -69,7 +71,9 @@ public class LoginActivity extends Activity {
 	}
 	
 	public void onSignUpClick(View v) {
-		
+		Intent intent = new Intent(this, SignUpActivity.class);
+		startActivity(intent);
+		finish();
 	}
 
 	@Override
