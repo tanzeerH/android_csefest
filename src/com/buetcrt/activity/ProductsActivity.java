@@ -75,6 +75,7 @@ public class ProductsActivity  extends FragmentActivity{
 					overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
 				}
 				else if(position==2){
+					Intent i=new Intent(ProductsActivity.this,ViewOrdersActivity.class);
 					startActivity(i);
 					overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
 				}

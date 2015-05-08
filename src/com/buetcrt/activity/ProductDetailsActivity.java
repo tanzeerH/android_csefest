@@ -87,7 +87,7 @@ public class ProductDetailsActivity extends BaseActivity implements
 	
 		CartService cartService = adapter.create(CartService.class);
 		int q=Integer.valueOf(tvQuantity.getText().toString());
-		Order order = new Order("w5Z2lAi3ad",AppUtility.selectedProduct.getObjectId(), q);
+		Order order = new Order(AppUtility.getCartId(ProductDetailsActivity.this),AppUtility.selectedProduct.getObjectId(), q);
 		cartService.addToCart(order, new Callback<JsonElement>() {
 
 			@Override

@@ -90,7 +90,7 @@ public class LoginActivity extends Activity {
 				AppUtility.saveCartId(LoginActivity.this, cartId);
 				System.out.println(cartId);
 				
-				Intent intent = new Intent(LoginActivity.this, TestActivity.class);
+				Intent intent = new Intent(LoginActivity.this, ProductsActivity.class);
 				startActivity(intent);
 			}
 
