@@ -17,4 +17,7 @@ public interface LoginSignUpService {
 	
 	@POST("/users")
 	void signup(@Body SignUpCredentials credentials, Callback<User> callback);
+	
+	@POST("/logout")
+	void logout();
 }

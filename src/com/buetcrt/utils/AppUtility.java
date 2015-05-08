@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.preference.PreferenceManager;
+import android.util.Log;
 
 import com.buetcrt.csefest.R;
 
@@ -67,6 +68,7 @@ public class AppUtility {
 		SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(context).edit();
 		editor.putString(Constants.EMAIL, email);
 		editor.putString(Constants.SESSION_TOKEN, sessionToken);
+		Log.d(Constants.SESSION_TOKEN, sessionToken);
 		editor.commit();
 	}
 	
@@ -74,5 +76,15 @@ public class AppUtility {
 		SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(context).edit();
 		editor.remove(Constants.SESSION_TOKEN);
 		editor.commit();
+	}
+	
+	public static void saveCartId(Context context, String cartId) {
+		SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(context).edit();
+		editor.putString(Constants.CART_ID, cartId);
+		editor.commit();
+	}
+	
+	public static String getCartId(Context context, String cartId) {
+		return PreferenceManager.getDefaultSharedPreferences(context).getString(Constants.CART_ID, null);
 	}
 }
