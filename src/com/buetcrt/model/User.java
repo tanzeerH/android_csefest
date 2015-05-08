@@ -1,38 +1,38 @@
 package com.buetcrt.model;
 
 public class User {
-	private String login;
-	private int id;
-	private String url;
+	private String username;
+	private String email;
+	private String sessionToken;
 
-	public String getLogin() {
-		return login;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setLogin(String login) {
-		this.login = login;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	public int getId() {
-		return id;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public String getUrl() {
-		return url;
+	public String getSessionToken() {
+		return sessionToken;
 	}
 
-	public void setUrl(String url) {
-		this.url = url;
+	public void setSessionToken(String sessionToken) {
+		this.sessionToken = sessionToken;
 	}
 
 	@Override
 	public String toString() {
-		return "User [login=" + login + ", id=" + id + ", url=" + url + "]";
+		return "User [username=" + username + ", email=" + email
+				+ ", sessionToken=" + sessionToken + "]";
 	}
 
-	
 }
