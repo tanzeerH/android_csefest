@@ -9,8 +9,10 @@ import android.net.NetworkInfo;
 import android.preference.PreferenceManager;
 
 import com.buetcrt.csefest.R;
+import com.buetcrt.csefest.dao.Products;
 
 public class AppUtility {
+	public static Products selectedProduct=null;
 	public static boolean hasInternet(Context context) {
 		ConnectivityManager connectivity = (ConnectivityManager) context
 				.getSystemService(Context.CONNECTIVITY_SERVICE);
