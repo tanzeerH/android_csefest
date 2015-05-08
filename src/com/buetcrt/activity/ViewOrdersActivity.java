@@ -24,13 +24,13 @@ import android.widget.Toast;
 import com.buetcrt.adapter.OrderAdapter;
 import com.buetcrt.apiclient.AuthenticatedRequestInterceptor;
 import com.buetcrt.apiclient.CartService;
-import com.shopaholic.team16.R;
 import com.buetcrt.model.Order;
 import com.buetcrt.utils.AppUtility;
 import com.buetcrt.utils.Constants;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
+import com.shopaholic.team16.R;
 
 public class ViewOrdersActivity extends ListActivity {
 	
@@ -61,14 +61,14 @@ public class ViewOrdersActivity extends ListActivity {
 				JsonArray orderArray = response.getAsJsonObject().get("results").getAsJsonArray();
 				orders = new ArrayList<Order>();
 				
-				if (orders.size() == 0) {
-					Toast.makeText(ViewOrdersActivity.this, "No active orders found", Toast.LENGTH_SHORT).show();
-					finish();
-				}
-				
 				for (int i = 0; i < orderArray.size(); i++) {
 					Order order = new Gson().fromJson(orderArray.get(i), Order.class);
 					orders.add(order);
+				}
+				
+				if (orders.size() == 0) {
+					Toast.makeText(ViewOrdersActivity.this, "No active orders found", Toast.LENGTH_SHORT).show();
+					finish();
 				}
 				
 				orderAdapter = new OrderAdapter(ViewOrdersActivity.this, R.layout.row_order, orders);
@@ -98,7 +98,7 @@ public class ViewOrdersActivity extends ListActivity {
 	
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
-		if (position < orders.size() - 1) {
+		if (position < orders.size()) {
 			Intent intent = new Intent(ViewOrdersActivity.this, OrderDetailsActivity.class);
 			intent.putExtra(Constants.ORDER_ID, orders.get(position).getProduct().getObjectId());
 			startActivity(intent);
@@ -109,7 +109,12 @@ public class ViewOrdersActivity extends ListActivity {
 		int total = 0;
 		
 		for (int i = 0; i < orders.size(); i++) {
-			total += orders.get(i).getSubTotal();
+			try {
+				total += orders.get(i).getSubTotal();
+			}
+			catch (Exception ex) {
+				
+			}
 		}
 		
 		return total;

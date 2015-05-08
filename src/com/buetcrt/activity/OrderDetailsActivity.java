@@ -11,9 +11,9 @@ import android.view.MenuItem;
 
 import com.buetcrt.apiclient.AuthenticatedRequestInterceptor;
 import com.buetcrt.apiclient.CartService;
-import com.shopaholic.team16.R;
 import com.buetcrt.utils.Constants;
 import com.google.gson.JsonElement;
+import com.shopaholic.team16.R;
 
 public class OrderDetailsActivity extends Activity {
 	
@@ -23,6 +23,8 @@ public class OrderDetailsActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		orderId = getIntent().getStringExtra(Constants.ORDER_ID);
+		
+		setContentView(R.layout.activity_order_details);
 	}
 	
 	@Override

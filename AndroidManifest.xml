@@ -41,9 +41,8 @@
         </activity>
         <activity android:name="com.buetcrt.activity.TestActivity" >
         </activity>
-        <activity android:name="com.buetcrt.activity.ViewOrdersActivity" >
+        <activity android:name="com.buetcrt.activity.ViewOrdersActivity" ></activity>
         <activity android:name="com.buetcrt.activity.OrderDetailsActivity" />
-        </activity>
     </application>
 
 </manifest>
