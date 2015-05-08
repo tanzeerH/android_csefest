@@ -8,6 +8,7 @@ import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 import android.app.ListActivity;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Menu;
@@ -31,18 +32,21 @@ public class ViewOrdersActivity extends ListActivity {
 	
 	private List<Order> orders;
 	private OrderAdapter orderAdapter;
+	private RestAdapter restAdapter;
+	private CartService cartService;
+	private ProgressDialog progressDialog;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_view_orders);
 		
-		RestAdapter adapter = new RestAdapter.Builder()
+		restAdapter = new RestAdapter.Builder()
 			.setEndpoint(Constants.API_END_POINT)
 			.setRequestInterceptor(new AuthenticatedRequestInterceptor(this))
 			.build();
 		
-		CartService cartService = adapter.create(CartService.class);
+		cartService = restAdapter.create(CartService.class);
 		cartService.getOrders(new Callback<JsonElement>() {
 			
 			@Override
@@ -95,6 +99,31 @@ public class ViewOrdersActivity extends ListActivity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		if (item.getItemId() == R.id.checkout) {
+			cartService.checkout(new Callback<JsonElement>() {
+				
+				@Override
+				public void success(JsonElement arg0, Response arg1) {
+					Toast.makeText(ViewOrdersActivity.this, 
+							"Checkout completed successfully", Toast.LENGTH_SHORT).show();
+					System.out.println(arg0.toString());
+					progressDialog.cancel();
+					finish();
+				}
+				
+				@Override
+				public void failure(RetrofitError arg0) {
+					Toast.makeText(ViewOrdersActivity.this, 
+							"Error checking out. Please try again", Toast.LENGTH_SHORT).show();
+					progressDialog.cancel();
+					finish();
+				}
+			});
+			
+			progressDialog = new ProgressDialog(ViewOrdersActivity.this);
+			progressDialog.setIndeterminate(true);
+			progressDialog.setMessage("Checking out your orders. Please wait..");
+			progressDialog.show();
+			
 			return true;
 		}
 		
