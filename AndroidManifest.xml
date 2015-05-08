@@ -22,11 +22,6 @@
         <activity
             android:name="com.buetcrt.activity.LoginActivity"
             android:label="Log In" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="com.buetcrt.activity.SignUpActivity"
@@ -36,6 +31,14 @@
         <activity android:name="com.buetcrt.activity.ProductDetailsActivity"></activity>
         <activity android:name="com.buetcrt.activity.SearchActivity"></activity>
         <activity android:name="com.buetcrt.activity.ProductsActivity"></activity>
+        <activity android:name="com.buetcrt.activity.TestActivity">
+            
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

@@ -53,7 +53,7 @@ public class LoginActivity extends Activity {
 			
 			@Override
 			public void success(User user, Response arg1) {
-				Intent intent = new Intent(LoginActivity.this, SplashActivity.class);
+				Intent intent = new Intent(LoginActivity.this, TestActivity.class);
 				AppUtility.saveLoginDetails(LoginActivity.this, user.getEmail(), user.getSessionToken());
 				startActivity(intent);
 			}
