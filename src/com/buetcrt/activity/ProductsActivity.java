@@ -74,7 +74,12 @@ public class ProductsActivity  extends FragmentActivity{
 					startActivity(i);
 					overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
 				}
-				else if(position==5){
+				else if(position==2){
+					Intent i=new Intent(ProductsActivity.this,ViewOrdersActivity.class);
+					startActivity(i);
+					overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+				}
+				else if(position==4){
 					if (AppUtility.hasInternet(ProductsActivity.this)) {
 
 						pd = new ProgressDialog(ProductsActivity.this);
@@ -220,7 +225,7 @@ public class ProductsActivity  extends FragmentActivity{
 		drawerItemList.add(new NavMenuItem("Profile",R.drawable.profile));
 		drawerItemList.add(new NavMenuItem("My Cart",R.drawable.mycart));
 		drawerItemList.add(new NavMenuItem("Search",R.drawable.search));
-		drawerItemList.add(new NavMenuItem("Reset Password",R.drawable.resetpass));
+		//drawerItemList.add(new NavMenuItem("Reset Password",R.drawable.resetpass));
 		drawerItemList.add(new NavMenuItem("Logout",R.drawable.logout));
 		
 	}

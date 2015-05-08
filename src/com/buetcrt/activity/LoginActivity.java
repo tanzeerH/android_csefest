@@ -20,6 +20,7 @@ import com.buetcrt.apiclient.CartService;
 import com.buetcrt.apiclient.LoginSignUpService;
 import com.buetcrt.apiclient.UnauthenticatedRequestInterceptor;
 import com.buetcrt.csefest.R;
+import com.buetcrt.model.ResetInfo;
 import com.buetcrt.model.User;
 import com.buetcrt.utils.AppUtility;
 import com.buetcrt.utils.Constants;
@@ -71,6 +72,39 @@ public class LoginActivity extends Activity {
 		
 		btnLogin.setText("Logging In..");
 	}
+	public void onLoginReset(View v)
+	{
+		
+	}
+	public void reset() {
+		if(etUserName.equals(""))
+			AppUtility.simpleAlert(LoginActivity.this,"Please enter yoor email in the username field.");
+		else
+		{
+		RestAdapter adapter = new RestAdapter.Builder()
+				.setEndpoint(Constants.API_END_POINT)
+				.setRequestInterceptor(
+						new AuthenticatedRequestInterceptor(this)).build();
+
+		LoginSignUpService loginSignUpService=adapter.create(LoginSignUpService.class);
+
+		loginSignUpService.reset(new ResetInfo(etUserName.getText().toString()), new Callback<JsonElement>() {
+
+			@Override
+			public void failure(RetrofitError arg0) {
+				AppUtility.simpleAlert(LoginActivity.this,"Error."+ arg0.getMessage());
+				
+			}
+
+			@Override
+			public void success(JsonElement arg0, Response arg1) {
+				AppUtility.simpleAlert(LoginActivity.this,"A mail has been set to your mailbox.");
+				
+			}
+		});
+		}
+	}
+	
 	
 	public void fetchCartId() {
 		RestAdapter adapter = new RestAdapter.Builder()
@@ -90,7 +124,7 @@ public class LoginActivity extends Activity {
 				AppUtility.saveCartId(LoginActivity.this, cartId);
 				System.out.println(cartId);
 				
-				Intent intent = new Intent(LoginActivity.this, TestActivity.class);
+				Intent intent = new Intent(LoginActivity.this, ProductsActivity.class);
 				startActivity(intent);
 			}
 
