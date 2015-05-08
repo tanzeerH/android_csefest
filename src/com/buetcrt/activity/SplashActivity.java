@@ -4,6 +4,7 @@ import com.buetcrt.csefest.R;
 import com.buetcrt.utils.AppUtility;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -21,9 +22,11 @@ public class SplashActivity extends Activity {
 			@Override
 			public void run() {
 				//start other activity
+				
+				Intent i=new Intent(SplashActivity.this,LoginActivity.class);
+				startActivity(i);
 				overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 				finish();
-				
 			}
 		}, 3000);
 	}

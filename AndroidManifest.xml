@@ -33,6 +33,9 @@
             android:label="Sign Up" />
         <activity android:name="com.buetcrt.activity.SplashActivity" >
         </activity>
+        <activity android:name="com.buetcrt.activity.ProductDetailsActivity"></activity>
+        <activity android:name="com.buetcrt.activity.SearchActivity"></activity>
+        <activity android:name="com.buetcrt.activity.ProductsActivity"></activity>
     </application>
 
 </manifest>
