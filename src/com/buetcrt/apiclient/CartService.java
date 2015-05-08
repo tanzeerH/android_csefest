@@ -4,6 +4,7 @@ import retrofit.Callback;
 import retrofit.http.Body;
 import retrofit.http.GET;
 import retrofit.http.POST;
+import retrofit.http.Query;
 
 import com.buetcrt.model.Order;
 import com.google.gson.JsonElement;
@@ -15,8 +16,9 @@ public interface CartService {
 	@POST("/classes/Order")
 	void addToCart(@Body Order order, Callback<JsonElement> response);
 	
+//	@GET("/classes/Order?where={\"cart\":{\"__type\":\"Pointer\",\"className\":\"Cart\",\"objectId\":{}}")
 	@GET("/classes/Order")
-	void getOrders(Callback<JsonElement> response);
+	void getOrders(@Query("where") String cartId, Callback<JsonElement> response);
 	
 	@POST("/functions/checkout")
 	void checkout(Callback<JsonElement> response);

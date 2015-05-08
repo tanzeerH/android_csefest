@@ -23,6 +23,7 @@ import com.buetcrt.apiclient.AuthenticatedRequestInterceptor;
 import com.buetcrt.apiclient.CartService;
 import com.buetcrt.csefest.R;
 import com.buetcrt.model.Order;
+import com.buetcrt.utils.AppUtility;
 import com.buetcrt.utils.Constants;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -46,8 +47,11 @@ public class ViewOrdersActivity extends ListActivity {
 			.setRequestInterceptor(new AuthenticatedRequestInterceptor(this))
 			.build();
 		
+		String whichCart = "{\"cart\":{\"__type\":\"Pointer\",\"className\":\"Cart\",\"objectId\":\"" + 
+				AppUtility.getCartId(ViewOrdersActivity.this) + "\"}}";
+		
 		cartService = restAdapter.create(CartService.class);
-		cartService.getOrders(new Callback<JsonElement>() {
+		cartService.getOrders(whichCart, new Callback<JsonElement>() {
 			
 			@Override
 			public void success(JsonElement response, Response arg1) {
@@ -68,12 +72,15 @@ public class ViewOrdersActivity extends ListActivity {
 				orderTotal.setLayoutParams(
 						new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 				getListView().addFooterView(orderTotal);
+				
+				System.out.println(response.toString());
 			}
 			
 			@Override
 			public void failure(RetrofitError arg0) {
 				Toast.makeText(ViewOrdersActivity.this, "Error loading data. Please retry", 
 						Toast.LENGTH_SHORT).show();
+				System.err.println(arg0.getMessage());
 				finish();
 			}
 		});

@@ -84,7 +84,7 @@ public class AppUtility {
 		editor.commit();
 	}
 	
-	public static String getCartId(Context context, String cartId) {
+	public static String getCartId(Context context) {
 		return PreferenceManager.getDefaultSharedPreferences(context).getString(Constants.CART_ID, null);
 	}
 }
