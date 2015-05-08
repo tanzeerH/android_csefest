@@ -9,12 +9,15 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -91,6 +94,15 @@ public class ViewOrdersActivity extends ListActivity {
 			}
 		});
 		
+	}
+	
+	@Override
+	protected void onListItemClick(ListView l, View v, int position, long id) {
+		if (position < orders.size() - 1) {
+			Intent intent = new Intent(ViewOrdersActivity.this, OrderDetailsActivity.class);
+			intent.putExtra(Constants.ORDER_ID, orders.get(position).getProduct().getObjectId());
+			startActivity(intent);
+		}
 	}
 	
 	private int getOrderTotal(List<Order> orders) {

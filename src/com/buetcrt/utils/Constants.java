@@ -7,4 +7,5 @@ public interface Constants {
 	String PASSWORD = "password";
 	String SESSION_TOKEN = "session_token";
 	String CART_ID = "cart_id";
+	String ORDER_ID = "order_id";
 }
