@@ -31,7 +31,8 @@
         <activity android:name="com.buetcrt.activity.ProductDetailsActivity"></activity>
         <activity android:name="com.buetcrt.activity.SearchActivity"></activity>
         <activity android:name="com.buetcrt.activity.ProductsActivity"></activity>
-        <activity android:name="com.buetcrt.activity.TestActivity">
+        <activity android:name="com.buetcrt.activity.TestActivity"></activity>
+        <activity android:name="com.buetcrt.activity.ViewOrdersActivity">
             
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
