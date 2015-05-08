@@ -10,6 +10,7 @@ import retrofit.http.QueryMap;
 
 import com.buetcrt.model.SignUpCredentials;
 import com.buetcrt.model.User;
+import com.google.gson.JsonElement;
 
 public interface LoginSignUpService {
 	@GET("/login")
@@ -19,5 +20,6 @@ public interface LoginSignUpService {
 	void signup(@Body SignUpCredentials credentials, Callback<User> callback);
 	
 	@POST("/logout")
-	void logout();
+	void logout(Callback<JsonElement> callback);
+
 }

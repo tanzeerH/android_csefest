@@ -2,6 +2,7 @@ package com.buetcrt.activity;
 
 import com.buetcrt.csefest.R;
 import com.buetcrt.lazylist.ImageLoader;
+import com.buetcrt.utils.AppUtility;
 
 import android.os.Bundle;
 import android.view.View;
@@ -36,8 +37,12 @@ public class ProductDetailsActivity extends BaseActivity implements
 		btnMinus.setOnClickListener(this);
 		btnAddToCart.setOnClickListener(this);
 		tvQuantity.setText("" + quantity);
-
-		// imageLoader.DisplayImage(url, imageView);
+		
+		tvDes.setText(AppUtility.selectedProduct.getDescription());
+		String image=AppUtility.selectedProduct.getImageURL();
+    	image=image.replaceAll("\"","");
+		imageLoader.DisplayImage(image,ivProduct);
+		tvPrice.setText("Price: "+(AppUtility.selectedProduct.getPrice()*quantity+" TK"));
 
 	}
 
@@ -46,10 +51,12 @@ public class ProductDetailsActivity extends BaseActivity implements
 		if (v.getId() == R.id.btn_plus) {
 			quantity++;
 			tvQuantity.setText("" + quantity);
+			tvPrice.setText("Price: "+(AppUtility.selectedProduct.getPrice()*quantity+" TK"));
 		} else if (v.getId() == R.id.btn_minus) {
 			if (quantity > 1) {
 				quantity--;
 				tvQuantity.setText("" + quantity);
+				tvPrice.setText("Price: "+(AppUtility.selectedProduct.getPrice()*quantity+" TK"));
 			}
 
 		} else if (v.getId() == R.id.btn_cart) {

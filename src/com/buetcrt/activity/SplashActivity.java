@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.Window;
+import android.view.textservice.SpellCheckerSubtype;
 
 public class SplashActivity extends Activity {
 	
@@ -22,9 +23,16 @@ public class SplashActivity extends Activity {
 			@Override
 			public void run() {
 				//start other activity
-				
+				if(AppUtility.isLoggedIn(SplashActivity.this))
+				{
+					Intent i=new Intent(SplashActivity.this,ProductsActivity.class);
+					startActivity(i);
+				}
+				else
+				{
 				Intent i=new Intent(SplashActivity.this,LoginActivity.class);
 				startActivity(i);
+				}
 				overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 				finish();
 			}
