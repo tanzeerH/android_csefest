@@ -57,6 +57,12 @@ public class ViewOrdersActivity extends ListActivity {
 			public void success(JsonElement response, Response arg1) {
 				JsonArray orderArray = response.getAsJsonObject().get("results").getAsJsonArray();
 				orders = new ArrayList<Order>();
+				
+				if (orders.size() == 0) {
+					Toast.makeText(ViewOrdersActivity.this, "No active orders found", Toast.LENGTH_SHORT).show();
+					finish();
+				}
+				
 				for (int i = 0; i < orderArray.size(); i++) {
 					Order order = new Gson().fromJson(orderArray.get(i), Order.class);
 					orders.add(order);
